@@ -1,0 +1,2689 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f62b5bd578114d3ee1763992ab9d6f43 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+<div style='position:fixed;top:10px;left:50px;z-index:9999;
+    background:rgba(10,10,20,0.95);padding:14px 18px;border-radius:10px;
+    border:1px solid #2ecc71;font-family:Arial;font-size:12px;color:white;
+    box-shadow:0 4px 20px rgba(0,0,0,0.7);min-width:230px;max-width:260px'>
+  <b style='font-size:14px'>♻️ Recharge Capacity</b><br>
+  <span style='font-size:10px;color:#888'>Greater Noida — Sector-wise Analysis</span>
+  <hr style='margin:8px 0;border-color:#333'>
+  <div>📍 Sectors analysed: <b>30</b></div>
+  <div>��️ Annual rainfall: <b>727.7 mm</b></div>
+  <div style='margin-top:4px'>💧 Natural recharge: <b style='color:#2ecc71'>15.45 M m³/yr</b></div>
+  <div>🏠 Rooftop potential: <b style='color:#3498db'>14.91 M m³/yr</b></div>
+  <div>⚡ Combined total: <b style='color:#f39c12'>30.37 M m³/yr</b></div>
+  <hr style='margin:8px 0;border-color:#333'>
+  <div style='font-size:11px;color:#aaa;margin-bottom:4px'>🏆 Top 5 Sectors (ML/yr)</div>
+  <div style='font-size:11px'><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🟢 Surajpur</span><span style='color:#2ecc71'><b>4347 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🟢 Bisrakh</span><span style='color:#2ecc71'><b>1285 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🟢 Dadri</span><span style='color:#2ecc71'><b>964 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🟢 Kasna</span><span style='color:#2ecc71'><b>942 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🟢 Knowledge Park I</span><span style='color:#2ecc71'><b>795 ML</b></span></div></div>
+  <hr style='margin:8px 0;border-color:#333'>
+  <div style='font-size:11px;color:#aaa;margin-bottom:4px'>⚠️ Needs Improvement</div>
+  <div style='font-size:11px'><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🟡 Techzone IV</span><span style='color:#f39c12'><b>89 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🔴 Ecotech I</span><span style='color:#e74c3c'><b>55 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🔴 Ecotech II</span><span style='color:#e74c3c'><b>50 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🔴 Ecotech III</span><span style='color:#e74c3c'><b>45 ML</b></span></div><div style='display:flex;justify-content:space-between;padding:2px 0'><span>🔴 Pari Chowk</span><span style='color:#e74c3c'><b>36 ML</b></span></div></div>
+  <hr style='margin:8px 0;border-color:#333'>
+  <div style='font-size:10px;color:#888'>🟢 &gt;500ML  🔵 200-500  🟡 80-200  🔴 &lt;80</div>
+  <div style='font-size:10px;color:#555'>Source: Open-Meteo + GNIDA + CGWB<br>07 Mar 2026 05:46</div>
+</div>
+    
+            <div class="folium-map" id="map_f62b5bd578114d3ee1763992ab9d6f43" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f62b5bd578114d3ee1763992ab9d6f43 = L.map(
+                "map_f62b5bd578114d3ee1763992ab9d6f43",
+                {
+                    center: [28.4744, 77.504],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+
+            
+
+        
+    
+            var tile_layer_9e6fd50563564e703aa5e2770b5c0272 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9e6fd50563564e703aa5e2770b5c0272.addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+    
+            var tile_layer_9a1fd21caea7abb5d13a6f787d8a66b6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9a1fd21caea7abb5d13a6f787d8a66b6.addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+    
+            var tile_layer_9ad2090a6f4cce6c361c5534b5474f52 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9ad2090a6f4cce6c361c5534b5474f52.addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+    
+            var tile_layer_dbfbd1b61cada1441bba2d4b5990cfe0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "CartoDB",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_dbfbd1b61cada1441bba2d4b5990cfe0.addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+    
+            var feature_group_a8a4113a303b21559da7add01ae64b08 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_b38ca632a8fbebb07c123a97b4bdec2c = L.circle(
+                [28.478, 77.506],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_07a655998a39d4c65496fee8c8e8f69c = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_05c6997228101a294b248675e309253b = $(`<div id="html_05c6997228101a294b248675e309253b" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Alpha 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>348.9 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (348,932 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:8%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>450.3 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>799.2 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.8 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>65%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.66</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>19 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_07a655998a39d4c65496fee8c8e8f69c.setContent(html_05c6997228101a294b248675e309253b);
+            
+        
+
+        circle_b38ca632a8fbebb07c123a97b4bdec2c.bindPopup(popup_07a655998a39d4c65496fee8c8e8f69c)
+        ;
+
+        
+    
+    
+            circle_b38ca632a8fbebb07c123a97b4bdec2c.bindTooltip(
+                `<div>
+                     🔵 Alpha 1: 348.9 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_edc0caa89cb47811c941dc86c020b6a0 = L.marker(
+                [28.478, 77.506],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_29e9c7c2acc518c2e1277c61f07836f1 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Alpha 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e349 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_edc0caa89cb47811c941dc86c020b6a0.bindTooltip(
+                `<div>
+                     🔵 Alpha 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_edc0caa89cb47811c941dc86c020b6a0.setIcon(div_icon_29e9c7c2acc518c2e1277c61f07836f1);
+            
+    
+            var circle_a21d52971a7ae96ef4796667ae315145 = L.circle(
+                [28.482, 77.509],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_d5940f9612d45ebf424514c6e06b958c = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_a5d68aa91eadb748082e0d33fcbf7cf4 = $(`<div id="html_a5d68aa91eadb748082e0d33fcbf7cf4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Alpha 2</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>336.6 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (336,561 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:7%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>371.1 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>707.7 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.5 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>60%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.63</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>18 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_d5940f9612d45ebf424514c6e06b958c.setContent(html_a5d68aa91eadb748082e0d33fcbf7cf4);
+            
+        
+
+        circle_a21d52971a7ae96ef4796667ae315145.bindPopup(popup_d5940f9612d45ebf424514c6e06b958c)
+        ;
+
+        
+    
+    
+            circle_a21d52971a7ae96ef4796667ae315145.bindTooltip(
+                `<div>
+                     🔵 Alpha 2: 336.6 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_975bb2cc944b302b37c7f93c58b74a1d = L.marker(
+                [28.482, 77.509],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_d32402a15ecf98fe625e647294a74c3a = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Alpha 2\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e337 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_975bb2cc944b302b37c7f93c58b74a1d.bindTooltip(
+                `<div>
+                     🔵 Alpha 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_975bb2cc944b302b37c7f93c58b74a1d.setIcon(div_icon_d32402a15ecf98fe625e647294a74c3a);
+            
+    
+            var circle_969cb0b9773ca834764b799d4621498f = L.circle(
+                [28.482, 77.513],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_2faf044bc497e585d7dfed272df2f6e9 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_8328098242565077d9cee0290af50f6e = $(`<div id="html_8328098242565077d9cee0290af50f6e" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Beta 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>203.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (203,771 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:4%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>398.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>602.6 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.6 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>62%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.64</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>11 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_2faf044bc497e585d7dfed272df2f6e9.setContent(html_8328098242565077d9cee0290af50f6e);
+            
+        
+
+        circle_969cb0b9773ca834764b799d4621498f.bindPopup(popup_2faf044bc497e585d7dfed272df2f6e9)
+        ;
+
+        
+    
+    
+            circle_969cb0b9773ca834764b799d4621498f.bindTooltip(
+                `<div>
+                     🔵 Beta 1: 203.8 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_31f026c98253d69a5ec09dfa5168a51f = L.marker(
+                [28.482, 77.513],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_480a7af5fa1c3626314163e354cdacbd = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Beta 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e204 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_31f026c98253d69a5ec09dfa5168a51f.bindTooltip(
+                `<div>
+                     🔵 Beta 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_31f026c98253d69a5ec09dfa5168a51f.setIcon(div_icon_480a7af5fa1c3626314163e354cdacbd);
+            
+    
+            var circle_f4127c97fdb66dbbb1d56aec51c58e54 = L.circle(
+                [28.485, 77.516],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_b88abd3d4f6e3ac66dfe126eaf181c4e = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_ba21f9f16406b6519f86e6349b7514d6 = $(`<div id="html_ba21f9f16406b6519f86e6349b7514d6" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟡 Beta 2</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>MODERATE</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>193.9 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (193,859 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#f39c12;width:4%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>356.3 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>550.1 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.4 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>60%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.63</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>10 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_b88abd3d4f6e3ac66dfe126eaf181c4e.setContent(html_ba21f9f16406b6519f86e6349b7514d6);
+            
+        
+
+        circle_f4127c97fdb66dbbb1d56aec51c58e54.bindPopup(popup_b88abd3d4f6e3ac66dfe126eaf181c4e)
+        ;
+
+        
+    
+    
+            circle_f4127c97fdb66dbbb1d56aec51c58e54.bindTooltip(
+                `<div>
+                     🟡 Beta 2: 193.9 ML/yr | MODERATE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2efa2e2efb5351b9bc4fe299d9a493ae = L.marker(
+                [28.485, 77.516],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_15fe3d7fe9f6af0a519edeca6d22579a = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#f39c12;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Beta 2\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e194 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_2efa2e2efb5351b9bc4fe299d9a493ae.bindTooltip(
+                `<div>
+                     🟡 Beta 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2efa2e2efb5351b9bc4fe299d9a493ae.setIcon(div_icon_15fe3d7fe9f6af0a519edeca6d22579a);
+            
+    
+            var circle_a046d1dcea0eaf0412a76dfde20e83c7 = L.circle(
+                [28.486, 77.519],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 224, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_ba0543d23d429158016b1b194f8ae5eb = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_79483767866aec2f7ffb8f22ae1d4e25 = $(`<div id="html_79483767866aec2f7ffb8f22ae1d4e25" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Gamma 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>448.4 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (448,354 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:10%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>421.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>870.2 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>3.1 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>55%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.6</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>24 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_ba0543d23d429158016b1b194f8ae5eb.setContent(html_79483767866aec2f7ffb8f22ae1d4e25);
+            
+        
+
+        circle_a046d1dcea0eaf0412a76dfde20e83c7.bindPopup(popup_ba0543d23d429158016b1b194f8ae5eb)
+        ;
+
+        
+    
+    
+            circle_a046d1dcea0eaf0412a76dfde20e83c7.bindTooltip(
+                `<div>
+                     🔵 Gamma 1: 448.4 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e3dbe553d8919e7cb05fd2e8d3a42545 = L.marker(
+                [28.486, 77.519],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_63aa69a048295e906faef03583b1b130 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Gamma 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e448 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_e3dbe553d8919e7cb05fd2e8d3a42545.bindTooltip(
+                `<div>
+                     🔵 Gamma 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e3dbe553d8919e7cb05fd2e8d3a42545.setIcon(div_icon_63aa69a048295e906faef03583b1b130);
+            
+    
+            var circle_3902d8d3f480bdcdcb1c3ed47e0e674d = L.circle(
+                [28.49, 77.525],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_98151164e179352138ad69ff7963236a = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_a966a15e91a508f44c83572ef3b2b2a9 = $(`<div id="html_a966a15e91a508f44c83572ef3b2b2a9" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Delta 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>224.6 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (224,575 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:5%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>387.5 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>612.0 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.7 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>58%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.62</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>12 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_98151164e179352138ad69ff7963236a.setContent(html_a966a15e91a508f44c83572ef3b2b2a9);
+            
+        
+
+        circle_3902d8d3f480bdcdcb1c3ed47e0e674d.bindPopup(popup_98151164e179352138ad69ff7963236a)
+        ;
+
+        
+    
+    
+            circle_3902d8d3f480bdcdcb1c3ed47e0e674d.bindTooltip(
+                `<div>
+                     🔵 Delta 1: 224.6 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_62437da8ec85d6e88e636526b42aa0d6 = L.marker(
+                [28.49, 77.525],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_0073865501e673d3ffc1a38fba99792e = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Delta 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e225 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_62437da8ec85d6e88e636526b42aa0d6.bindTooltip(
+                `<div>
+                     🔵 Delta 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_62437da8ec85d6e88e636526b42aa0d6.setIcon(div_icon_0073865501e673d3ffc1a38fba99792e);
+            
+    
+            var circle_94f8db2e17636aa2c1ee09644475aa3c = L.circle(
+                [28.494, 77.53],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_e472393c04982e3ddbc956b26e4eba0e = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_0c446487c2196fc5bca7d10d718a1067 = $(`<div id="html_0c446487c2196fc5bca7d10d718a1067" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟡 Zeta 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>MODERATE</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>196.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (196,828 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#f39c12;width:4%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>318.7 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>515.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.3 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>56%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.61</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>10 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_e472393c04982e3ddbc956b26e4eba0e.setContent(html_0c446487c2196fc5bca7d10d718a1067);
+            
+        
+
+        circle_94f8db2e17636aa2c1ee09644475aa3c.bindPopup(popup_e472393c04982e3ddbc956b26e4eba0e)
+        ;
+
+        
+    
+    
+            circle_94f8db2e17636aa2c1ee09644475aa3c.bindTooltip(
+                `<div>
+                     🟡 Zeta 1: 196.8 ML/yr | MODERATE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8919be2ca58d3f945166e96bf44c8d08 = L.marker(
+                [28.494, 77.53],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_5101a6a6db6c907e050cbeeabf07f989 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#f39c12;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Zeta 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e197 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_8919be2ca58d3f945166e96bf44c8d08.bindTooltip(
+                `<div>
+                     🟡 Zeta 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8919be2ca58d3f945166e96bf44c8d08.setIcon(div_icon_5101a6a6db6c907e050cbeeabf07f989);
+            
+    
+            var circle_ffbd5c8b00c1b4acce878fd84338f95e = L.circle(
+                [28.497, 77.535],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_59e1b29591d457e5b4cc273d1412d99d = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_4262dd445271fbaa947533c4395e0758 = $(`<div id="html_4262dd445271fbaa947533c4395e0758" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟡 Eta 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>MODERATE</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>93.6 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (93,610 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#f39c12;width:2%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>280.6 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>374.2 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.1 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Clay Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>54%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.6</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>5 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_59e1b29591d457e5b4cc273d1412d99d.setContent(html_4262dd445271fbaa947533c4395e0758);
+            
+        
+
+        circle_ffbd5c8b00c1b4acce878fd84338f95e.bindPopup(popup_59e1b29591d457e5b4cc273d1412d99d)
+        ;
+
+        
+    
+    
+            circle_ffbd5c8b00c1b4acce878fd84338f95e.bindTooltip(
+                `<div>
+                     🟡 Eta 1: 93.6 ML/yr | MODERATE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_03beeb66f9691ccf4b96d8e08c1760cc = L.marker(
+                [28.497, 77.535],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_b8b36cd313fb8cb5613be6ad408130da = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#f39c12;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Eta 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e94 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_03beeb66f9691ccf4b96d8e08c1760cc.bindTooltip(
+                `<div>
+                     🟡 Eta 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03beeb66f9691ccf4b96d8e08c1760cc.setIcon(div_icon_b8b36cd313fb8cb5613be6ad408130da);
+            
+    
+            var circle_39ad2d4586659ad85efe34db740eecbe = L.circle(
+                [28.475, 77.485],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 397, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_20a6c39d56fc05ae8915760c0d6b6a66 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_227225019466d78f127d005199204027 = $(`<div id="html_227225019466d78f127d005199204027" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Knowledge Park I</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>795.2 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (795,221 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:18%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>467.6 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,262.8 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>4.2 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Institutional</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>45%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.55</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>43 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_20a6c39d56fc05ae8915760c0d6b6a66.setContent(html_227225019466d78f127d005199204027);
+            
+        
+
+        circle_39ad2d4586659ad85efe34db740eecbe.bindPopup(popup_20a6c39d56fc05ae8915760c0d6b6a66)
+        ;
+
+        
+    
+    
+            circle_39ad2d4586659ad85efe34db740eecbe.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park I: 795.2 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fa2249a81d3ec78c81e7cb0d9bd67cc4 = L.marker(
+                [28.475, 77.485],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_e693df33abc18aaf82fe739ef20da5b3 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Knowledge Park I\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e795 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_fa2249a81d3ec78c81e7cb0d9bd67cc4.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park I
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fa2249a81d3ec78c81e7cb0d9bd67cc4.setIcon(div_icon_e693df33abc18aaf82fe739ef20da5b3);
+            
+    
+            var circle_97a79f16cc12224c7a2f6f9d437499ff = L.circle(
+                [28.471, 77.49],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 346, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_8aa5ee4dd9cffaa28dc6ab516748354c = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_37a5342f8a955cb146aa85fa4692d4b3 = $(`<div id="html_37a5342f8a955cb146aa85fa4692d4b3" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Knowledge Park II</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>693.3 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (693,251 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:15%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>451.3 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,144.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>3.8 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Institutional</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>48%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.56</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>37 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_8aa5ee4dd9cffaa28dc6ab516748354c.setContent(html_37a5342f8a955cb146aa85fa4692d4b3);
+            
+        
+
+        circle_97a79f16cc12224c7a2f6f9d437499ff.bindPopup(popup_8aa5ee4dd9cffaa28dc6ab516748354c)
+        ;
+
+        
+    
+    
+            circle_97a79f16cc12224c7a2f6f9d437499ff.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park II: 693.3 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3d9f54d61890a4f16170861166565e90 = L.marker(
+                [28.471, 77.49],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_8b263c08bdc48a3e69a904067be347e5 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Knowledge Park II\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e693 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_3d9f54d61890a4f16170861166565e90.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park II
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d9f54d61890a4f16170861166565e90.setIcon(div_icon_8b263c08bdc48a3e69a904067be347e5);
+            
+    
+            var circle_45eede02aad8e4896f6a4551e5b3e271 = L.circle(
+                [28.468, 77.495],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 311, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_9f2e23815561b612c625f13939dddae8 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_5e825c1796f60eb557d8aa6af8bfe75d = $(`<div id="html_5e825c1796f60eb557d8aa6af8bfe75d" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Knowledge Park III</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>622.4 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (622,411 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:14%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>433.0 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,055.4 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>3.5 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Institutional</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>50%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.57</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>34 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_9f2e23815561b612c625f13939dddae8.setContent(html_5e825c1796f60eb557d8aa6af8bfe75d);
+            
+        
+
+        circle_45eede02aad8e4896f6a4551e5b3e271.bindPopup(popup_9f2e23815561b612c625f13939dddae8)
+        ;
+
+        
+    
+    
+            circle_45eede02aad8e4896f6a4551e5b3e271.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park III: 622.4 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_07804e65416dd8ebd248b201d2d85056 = L.marker(
+                [28.468, 77.495],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_a727ce2c9e64bc0762a71ad8173aa2fb = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Knowledge Park III\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e622 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_07804e65416dd8ebd248b201d2d85056.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park III
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_07804e65416dd8ebd248b201d2d85056.setIcon(div_icon_a727ce2c9e64bc0762a71ad8173aa2fb);
+            
+    
+            var circle_3f6c053e1619d0249cf9b1278f106623 = L.circle(
+                [28.464, 77.498],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 295, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_baca1e97272852e3a215527594fbbb63 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_de538019725a9dcc09d5fe9841fbb519 = $(`<div id="html_de538019725a9dcc09d5fe9841fbb519" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Knowledge Park V</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>591.2 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (591,154 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:13%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>372.1 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>963.3 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>3.2 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Institutional</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>47%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.56</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>32 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_baca1e97272852e3a215527594fbbb63.setContent(html_de538019725a9dcc09d5fe9841fbb519);
+            
+        
+
+        circle_3f6c053e1619d0249cf9b1278f106623.bindPopup(popup_baca1e97272852e3a215527594fbbb63)
+        ;
+
+        
+    
+    
+            circle_3f6c053e1619d0249cf9b1278f106623.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park V: 591.2 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e754838512352c6c5503845137d35ebd = L.marker(
+                [28.464, 77.498],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_1e887e214f8e0063a508610ee86ce155 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Knowledge Park V\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e591 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_e754838512352c6c5503845137d35ebd.bindTooltip(
+                `<div>
+                     🟢 Knowledge Park V
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e754838512352c6c5503845137d35ebd.setIcon(div_icon_1e887e214f8e0063a508610ee86ce155);
+            
+    
+            var circle_1b764a68a3b6c0efca84b1109ff123e7 = L.circle(
+                [28.44, 77.485],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_8c94d43e6c02e990acc28bdf5ad6fdee = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_56cf722426e834d888e372440ab315f7 = $(`<div id="html_56cf722426e834d888e372440ab315f7" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔴 Ecotech I</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#e74c3c'>LOW</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>54.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (54,752 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#e74c3c;width:1%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>979.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,034.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>5.5 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Industrial</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Clay</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>72%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.7</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>3 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_8c94d43e6c02e990acc28bdf5ad6fdee.setContent(html_56cf722426e834d888e372440ab315f7);
+            
+        
+
+        circle_1b764a68a3b6c0efca84b1109ff123e7.bindPopup(popup_8c94d43e6c02e990acc28bdf5ad6fdee)
+        ;
+
+        
+    
+    
+            circle_1b764a68a3b6c0efca84b1109ff123e7.bindTooltip(
+                `<div>
+                     🔴 Ecotech I: 54.8 ML/yr | LOW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c0e6d1187e136d31b440b353886cfe11 = L.marker(
+                [28.44, 77.485],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_1e4a0c9694c57a8e6fad613f98cf7b99 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#e74c3c;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Ecotech I\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e55 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_c0e6d1187e136d31b440b353886cfe11.bindTooltip(
+                `<div>
+                     🔴 Ecotech I
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c0e6d1187e136d31b440b353886cfe11.setIcon(div_icon_1e4a0c9694c57a8e6fad613f98cf7b99);
+            
+    
+            var circle_8d5b0d1437790ccbe0ce84a612f4590d = L.circle(
+                [28.43, 77.495],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_f7236af245ffde29e37c220c14a3c760 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_715015e31bb4dc11541ba803deaf12f1 = $(`<div id="html_715015e31bb4dc11541ba803deaf12f1" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔴 Ecotech II</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#e74c3c'>LOW</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>49.5 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (49,513 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#e74c3c;width:1%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>831.3 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>880.8 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>4.8 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Industrial</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Clay</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>70%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.69</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>2 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.7 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.201 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_f7236af245ffde29e37c220c14a3c760.setContent(html_715015e31bb4dc11541ba803deaf12f1);
+            
+        
+
+        circle_8d5b0d1437790ccbe0ce84a612f4590d.bindPopup(popup_f7236af245ffde29e37c220c14a3c760)
+        ;
+
+        
+    
+    
+            circle_8d5b0d1437790ccbe0ce84a612f4590d.bindTooltip(
+                `<div>
+                     🔴 Ecotech II: 49.5 ML/yr | LOW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_390f346b3cc732e668fd1c433607dbc2 = L.marker(
+                [28.43, 77.495],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_7caa901fe837dc7b33637212a77cf2cf = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#e74c3c;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Ecotech II\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e50 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_390f346b3cc732e668fd1c433607dbc2.bindTooltip(
+                `<div>
+                     🔴 Ecotech II
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_390f346b3cc732e668fd1c433607dbc2.setIcon(div_icon_7caa901fe837dc7b33637212a77cf2cf);
+            
+    
+            var circle_b3fde253d957bf3ba88097de87e4e0fc = L.circle(
+                [28.42, 77.48],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_752050708467c68385fa537fc0b12d82 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_eaa0accabbab155bc84c85a8def9c9a9 = $(`<div id="html_eaa0accabbab155bc84c85a8def9c9a9" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔴 Ecotech III</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#e74c3c'>LOW</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>44.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (44,837 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#e74c3c;width:1%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>706.6 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>751.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>4.2 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Industrial</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Clay</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>68%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.67</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>2 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.7 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.201 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_752050708467c68385fa537fc0b12d82.setContent(html_eaa0accabbab155bc84c85a8def9c9a9);
+            
+        
+
+        circle_b3fde253d957bf3ba88097de87e4e0fc.bindPopup(popup_752050708467c68385fa537fc0b12d82)
+        ;
+
+        
+    
+    
+            circle_b3fde253d957bf3ba88097de87e4e0fc.bindTooltip(
+                `<div>
+                     🔴 Ecotech III: 44.8 ML/yr | LOW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b060fdf17e86741018c681e16650a8c5 = L.marker(
+                [28.42, 77.48],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_056f9ddaf16ec9f7016c634010b495ba = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#e74c3c;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Ecotech III\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e45 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_b060fdf17e86741018c681e16650a8c5.bindTooltip(
+                `<div>
+                     🔴 Ecotech III
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b060fdf17e86741018c681e16650a8c5.setIcon(div_icon_056f9ddaf16ec9f7016c634010b495ba);
+            
+    
+            var circle_651f69e3e79909d8809240725cf8d144 = L.circle(
+                [28.46, 77.51],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_da0d27ec45008b9cfe698e4223387590 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_e0429f292e8edae3257ae722de8500ef = $(`<div id="html_e0429f292e8edae3257ae722de8500ef" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟡 Techzone I</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>MODERATE</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>94.1 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (94,074 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#f39c12;width:2%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>623.5 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>717.6 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>3.6 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Industrial</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Clay Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>70%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.69</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>5 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_da0d27ec45008b9cfe698e4223387590.setContent(html_e0429f292e8edae3257ae722de8500ef);
+            
+        
+
+        circle_651f69e3e79909d8809240725cf8d144.bindPopup(popup_da0d27ec45008b9cfe698e4223387590)
+        ;
+
+        
+    
+    
+            circle_651f69e3e79909d8809240725cf8d144.bindTooltip(
+                `<div>
+                     🟡 Techzone I: 94.1 ML/yr | MODERATE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_40a8b2c80abae710e6b3b8da15941162 = L.marker(
+                [28.46, 77.51],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_16997084a5e920d95d3fc09ad308cb93 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#f39c12;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Techzone I\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e94 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_40a8b2c80abae710e6b3b8da15941162.bindTooltip(
+                `<div>
+                     🟡 Techzone I
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_40a8b2c80abae710e6b3b8da15941162.setIcon(div_icon_16997084a5e920d95d3fc09ad308cb93);
+            
+    
+            var circle_1b07b03085d1cad63c333012c36e4bcb = L.circle(
+                [28.4663, 77.52],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_313169300a6cb90695842b3d87e3a1fc = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_48a7a3f7cc5bb644463df87976cb1ada = $(`<div id="html_48a7a3f7cc5bb644463df87976cb1ada" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟡 Techzone IV</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>MODERATE</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>89.2 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (89,246 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#f39c12;width:2%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>555.2 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>644.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>3.3 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Industrial</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Clay Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>68%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.67</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>4 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_313169300a6cb90695842b3d87e3a1fc.setContent(html_48a7a3f7cc5bb644463df87976cb1ada);
+            
+        
+
+        circle_1b07b03085d1cad63c333012c36e4bcb.bindPopup(popup_313169300a6cb90695842b3d87e3a1fc)
+        ;
+
+        
+    
+    
+            circle_1b07b03085d1cad63c333012c36e4bcb.bindTooltip(
+                `<div>
+                     🟡 Techzone IV: 89.2 ML/yr | MODERATE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_dfbfafc01054e3cf16951cc1219a8045 = L.marker(
+                [28.4663, 77.52],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_8fd3ae663807377a0fde726cf5c111aa = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#f39c12;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Techzone IV\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e89 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_dfbfafc01054e3cf16951cc1219a8045.bindTooltip(
+                `<div>
+                     🟡 Techzone IV
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dfbfafc01054e3cf16951cc1219a8045.setIcon(div_icon_8fd3ae663807377a0fde726cf5c111aa);
+            
+    
+            var circle_597cabaf7f07bb6badf56ec839b4e801 = L.circle(
+                [28.46, 77.515],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 203, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_d486763fe36cc1c84a6f79b7b10b4f4a = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_e547f38c43a7e37a9e08d8364445f088 = $(`<div id="html_e547f38c43a7e37a9e08d8364445f088" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Omicron 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>407.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (407,821 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:9%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>409.0 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>816.8 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.9 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>57%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.61</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>22 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_d486763fe36cc1c84a6f79b7b10b4f4a.setContent(html_e547f38c43a7e37a9e08d8364445f088);
+            
+        
+
+        circle_597cabaf7f07bb6badf56ec839b4e801.bindPopup(popup_d486763fe36cc1c84a6f79b7b10b4f4a)
+        ;
+
+        
+    
+    
+            circle_597cabaf7f07bb6badf56ec839b4e801.bindTooltip(
+                `<div>
+                     🔵 Omicron 1: 407.8 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b924d27f2d385d8b0e85326363317cd7 = L.marker(
+                [28.46, 77.515],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_0494f48cd0e81cf62327300a04c67d8b = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Omicron 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e408 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_b924d27f2d385d8b0e85326363317cd7.bindTooltip(
+                `<div>
+                     🔵 Omicron 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b924d27f2d385d8b0e85326363317cd7.setIcon(div_icon_0494f48cd0e81cf62327300a04c67d8b);
+            
+    
+            var circle_6875eb44cc1f6350dd09a5c33b52618a = L.circle(
+                [28.457, 77.518],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_75da48aadb3a011391d83b668d38d365 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_13b1e2400fef39b6d703015762d3a3b4 = $(`<div id="html_13b1e2400fef39b6d703015762d3a3b4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Omicron 2</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>376.0 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (376,039 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:8%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>353.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>729.8 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.6 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>55%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.6</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>20 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_75da48aadb3a011391d83b668d38d365.setContent(html_13b1e2400fef39b6d703015762d3a3b4);
+            
+        
+
+        circle_6875eb44cc1f6350dd09a5c33b52618a.bindPopup(popup_75da48aadb3a011391d83b668d38d365)
+        ;
+
+        
+    
+    
+            circle_6875eb44cc1f6350dd09a5c33b52618a.bindTooltip(
+                `<div>
+                     🔵 Omicron 2: 376.0 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_59a62f931176af6dcf5da15bae50b6e1 = L.marker(
+                [28.457, 77.518],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_5118b3ea8a16e0cd96f027ee70bc14f9 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Omicron 2\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e376 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_59a62f931176af6dcf5da15bae50b6e1.bindTooltip(
+                `<div>
+                     🔵 Omicron 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_59a62f931176af6dcf5da15bae50b6e1.setIcon(div_icon_5118b3ea8a16e0cd96f027ee70bc14f9);
+            
+    
+            var circle_c4a13ecf89b2d6735628399e83fffd76 = L.circle(
+                [28.455, 77.52],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_036a6770cbb199d7077c9b2909f190e7 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_d3c055bc35fd93eda2a4dc6fa2cbfcb4 = $(`<div id="html_d3c055bc35fd93eda2a4dc6fa2cbfcb4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Chi 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>356.7 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (356,719 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:8%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>314.7 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>671.4 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.4 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>53%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.59</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>19 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_036a6770cbb199d7077c9b2909f190e7.setContent(html_d3c055bc35fd93eda2a4dc6fa2cbfcb4);
+            
+        
+
+        circle_c4a13ecf89b2d6735628399e83fffd76.bindPopup(popup_036a6770cbb199d7077c9b2909f190e7)
+        ;
+
+        
+    
+    
+            circle_c4a13ecf89b2d6735628399e83fffd76.bindTooltip(
+                `<div>
+                     🔵 Chi 1: 356.7 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_32229cc187c20ad7f186b7a1f3089c5d = L.marker(
+                [28.455, 77.52],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_7d6cbb836645c8546cd58ca2ec5d32c2 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Chi 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e357 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_32229cc187c20ad7f186b7a1f3089c5d.bindTooltip(
+                `<div>
+                     🔵 Chi 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_32229cc187c20ad7f186b7a1f3089c5d.setIcon(div_icon_7d6cbb836645c8546cd58ca2ec5d32c2);
+            
+    
+            var circle_c01379eefe11c4c6e974fa557c74c070 = L.circle(
+                [28.452, 77.523],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_324d47f7ee7234c06232bcd1cbfc1284 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_9e0a3ff85a5763d3d981ce075975136b = $(`<div id="html_9e0a3ff85a5763d3d981ce075975136b" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Chi 2</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>331.4 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (331,395 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:7%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>283.0 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>614.4 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.2 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>52%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.59</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>18 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_324d47f7ee7234c06232bcd1cbfc1284.setContent(html_9e0a3ff85a5763d3d981ce075975136b);
+            
+        
+
+        circle_c01379eefe11c4c6e974fa557c74c070.bindPopup(popup_324d47f7ee7234c06232bcd1cbfc1284)
+        ;
+
+        
+    
+    
+            circle_c01379eefe11c4c6e974fa557c74c070.bindTooltip(
+                `<div>
+                     🔵 Chi 2: 331.4 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b09250c8097cea57c2479743906c2a24 = L.marker(
+                [28.452, 77.523],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_7473f35853dbf4775486b9c15c105eb7 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Chi 2\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e331 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_b09250c8097cea57c2479743906c2a24.bindTooltip(
+                `<div>
+                     🔵 Chi 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b09250c8097cea57c2479743906c2a24.setIcon(div_icon_7473f35853dbf4775486b9c15c105eb7);
+            
+    
+            var circle_4aa65eab362fba3cd8e9dfe743ae990e = L.circle(
+                [28.448, 77.526],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_885a614e72278ff720dca64cf0d0de46 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_432256bd6d232caace30c8535d46406d = $(`<div id="html_432256bd6d232caace30c8535d46406d" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔵 Phi 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#3498db'>GOOD</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>324.7 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (324,736 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#3498db;width:7%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>259.8 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>584.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.1 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>50%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.57</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>17 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_885a614e72278ff720dca64cf0d0de46.setContent(html_432256bd6d232caace30c8535d46406d);
+            
+        
+
+        circle_4aa65eab362fba3cd8e9dfe743ae990e.bindPopup(popup_885a614e72278ff720dca64cf0d0de46)
+        ;
+
+        
+    
+    
+            circle_4aa65eab362fba3cd8e9dfe743ae990e.bindTooltip(
+                `<div>
+                     🔵 Phi 1: 324.7 ML/yr | GOOD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_092cdbf90beda9f6c434d4fe803de4f7 = L.marker(
+                [28.448, 77.526],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_a514e67c8a87a2b053192e4337c6fdab = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#3498db;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Phi 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e325 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_092cdbf90beda9f6c434d4fe803de4f7.bindTooltip(
+                `<div>
+                     🔵 Phi 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_092cdbf90beda9f6c434d4fe803de4f7.setIcon(div_icon_a514e67c8a87a2b053192e4337c6fdab);
+            
+    
+            var circle_ec312979649361f628929c9899f45ce4 = L.circle(
+                [28.45, 77.5],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 470, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_86aec3575ec837e6b991083210102366 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_016e8e9a3164d898850322cee26483f8 = $(`<div id="html_016e8e9a3164d898850322cee26483f8" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Kasna</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>941.5 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (941,544 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:21%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>843.7 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,785.2 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>6.2 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Mixed</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>55%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.6</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>51 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_86aec3575ec837e6b991083210102366.setContent(html_016e8e9a3164d898850322cee26483f8);
+            
+        
+
+        circle_ec312979649361f628929c9899f45ce4.bindPopup(popup_86aec3575ec837e6b991083210102366)
+        ;
+
+        
+    
+    
+            circle_ec312979649361f628929c9899f45ce4.bindTooltip(
+                `<div>
+                     🟢 Kasna: 941.5 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_afc4eb209ab27f85f067b3bbae177704 = L.marker(
+                [28.45, 77.5],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_7de738fb1c23422e6fb0b8c799050fa4 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Kasna\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e942 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_afc4eb209ab27f85f067b3bbae177704.bindTooltip(
+                `<div>
+                     🟢 Kasna
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_afc4eb209ab27f85f067b3bbae177704.setIcon(div_icon_7de738fb1c23422e6fb0b8c799050fa4);
+            
+    
+            var circle_fac5c77d4255f258a543d156d0f4965e = L.circle(
+                [28.435, 77.51],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 900, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_daa7d81465576e720840104146a6e4d1 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_417fb3afa6d76e8b101d65e7bfa8eecd = $(`<div id="html_417fb3afa6d76e8b101d65e7bfa8eecd" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Surajpur</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>4,347.1 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (4,347,098 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:100%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>371.1 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>4,718.2 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>7.5 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Eco/Wetland</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>20%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.41</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>238 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.7 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.201 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_daa7d81465576e720840104146a6e4d1.setContent(html_417fb3afa6d76e8b101d65e7bfa8eecd);
+            
+        
+
+        circle_fac5c77d4255f258a543d156d0f4965e.bindPopup(popup_daa7d81465576e720840104146a6e4d1)
+        ;
+
+        
+    
+    
+            circle_fac5c77d4255f258a543d156d0f4965e.bindTooltip(
+                `<div>
+                     🟢 Surajpur: 4347.1 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_60c80725c502d370ec114b21cfb1927a = L.marker(
+                [28.435, 77.51],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_9dafe5e7118327aa25d3cfe877e466a1 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Surajpur\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e4347 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_60c80725c502d370ec114b21cfb1927a.bindTooltip(
+                `<div>
+                     🟢 Surajpur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_60c80725c502d370ec114b21cfb1927a.setIcon(div_icon_9dafe5e7118327aa25d3cfe877e466a1);
+            
+    
+            var circle_e4914396e08ab916b6688de53beb8c59 = L.circle(
+                [28.52, 77.47],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 642, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_c62af0ac98d6cf0322af54c621451a7c = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_2ea469d90873e778bff1e212f1e06516 = $(`<div id="html_2ea469d90873e778bff1e212f1e06516" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Bisrakh</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>1,285.2 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (1,285,191 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:29%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>502.3 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,787.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>5.8 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Rural/Mixed</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Sandy Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>35%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.49</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>70 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_c62af0ac98d6cf0322af54c621451a7c.setContent(html_2ea469d90873e778bff1e212f1e06516);
+            
+        
+
+        circle_e4914396e08ab916b6688de53beb8c59.bindPopup(popup_c62af0ac98d6cf0322af54c621451a7c)
+        ;
+
+        
+    
+    
+            circle_e4914396e08ab916b6688de53beb8c59.bindTooltip(
+                `<div>
+                     🟢 Bisrakh: 1285.2 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_49f40e0b950d5aa43dd0a2bc5da3ab75 = L.marker(
+                [28.52, 77.47],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_3f226ebd4a37eae87fbc82dd502cf73c = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Bisrakh\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e1285 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_49f40e0b950d5aa43dd0a2bc5da3ab75.bindTooltip(
+                `<div>
+                     🟢 Bisrakh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_49f40e0b950d5aa43dd0a2bc5da3ab75.setIcon(div_icon_3f226ebd4a37eae87fbc82dd502cf73c);
+            
+    
+            var circle_85e034032227c2ff46ebff17b96baddc = L.circle(
+                [28.505, 77.43],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 333, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_8a9452308ba44668676d3926256639ba = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_531c5ea22be3adb99aabf2b39f2467f2 = $(`<div id="html_531c5ea22be3adb99aabf2b39f2467f2" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Noida Ext (GN West)</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>666.2 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (666,173 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:15%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>1,303.9 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,970.1 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>8.5 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>62%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.64</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>36 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_8a9452308ba44668676d3926256639ba.setContent(html_531c5ea22be3adb99aabf2b39f2467f2);
+            
+        
+
+        circle_85e034032227c2ff46ebff17b96baddc.bindPopup(popup_8a9452308ba44668676d3926256639ba)
+        ;
+
+        
+    
+    
+            circle_85e034032227c2ff46ebff17b96baddc.bindTooltip(
+                `<div>
+                     🟢 Noida Ext (GN West): 666.2 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d85a8848082ca0223dc170d169085864 = L.marker(
+                [28.505, 77.43],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_f40b66196ca13559d653b326ad78ad62 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Noida Ext (GN West)\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e666 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_d85a8848082ca0223dc170d169085864.bindTooltip(
+                `<div>
+                     🟢 Noida Ext (GN West)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d85a8848082ca0223dc170d169085864.setIcon(div_icon_f40b66196ca13559d653b326ad78ad62);
+            
+    
+            var circle_6d129d9fa3fcf223ede3dd161ab446a9 = L.circle(
+                [28.55, 77.555],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 482, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_60c4540f686b7598e24d333d79906e96 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_479d4a4d9d57b924a2608619e7e8e9c6 = $(`<div id="html_479d4a4d9d57b924a2608619e7e8e9c6" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟢 Dadri</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>EXCELLENT</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>964.1 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (964,057 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#2ecc71;width:22%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>910.5 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>1,874.6 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>9.2 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Mixed/Rural</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>40%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.52</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>52 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_60c4540f686b7598e24d333d79906e96.setContent(html_479d4a4d9d57b924a2608619e7e8e9c6);
+            
+        
+
+        circle_6d129d9fa3fcf223ede3dd161ab446a9.bindPopup(popup_60c4540f686b7598e24d333d79906e96)
+        ;
+
+        
+    
+    
+            circle_6d129d9fa3fcf223ede3dd161ab446a9.bindTooltip(
+                `<div>
+                     🟢 Dadri: 964.1 ML/yr | EXCELLENT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3719909fc0682dfd460854ad3d117ce8 = L.marker(
+                [28.55, 77.555],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_6ac871465fcdd41393b83086b651403e = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#2ecc71;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Dadri\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e964 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_3719909fc0682dfd460854ad3d117ce8.bindTooltip(
+                `<div>
+                     🟢 Dadri
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3719909fc0682dfd460854ad3d117ce8.setIcon(div_icon_6ac871465fcdd41393b83086b651403e);
+            
+    
+            var circle_75d9d64990feb3ed3f3c25fa20c65a11 = L.circle(
+                [28.495, 77.51],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_85d72488fad4153dcfcb93ff84f78d1e = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_bb9f4f1b49335bdb4b180d58e81d73c8 = $(`<div id="html_bb9f4f1b49335bdb4b180d58e81d73c8" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟡 Sector 1</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>MODERATE</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>161.5 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (161,549 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#f39c12;width:3%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>296.9 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>458.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.0 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>60%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.63</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>8 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_85d72488fad4153dcfcb93ff84f78d1e.setContent(html_bb9f4f1b49335bdb4b180d58e81d73c8);
+            
+        
+
+        circle_75d9d64990feb3ed3f3c25fa20c65a11.bindPopup(popup_85d72488fad4153dcfcb93ff84f78d1e)
+        ;
+
+        
+    
+    
+            circle_75d9d64990feb3ed3f3c25fa20c65a11.bindTooltip(
+                `<div>
+                     🟡 Sector 1: 161.5 ML/yr | MODERATE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8bcca2e547b421765bbae526797cde97 = L.marker(
+                [28.495, 77.51],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_737fe8330ff9e190c0faf203c583c4fd = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#f39c12;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Sector 1\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e162 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_8bcca2e547b421765bbae526797cde97.bindTooltip(
+                `<div>
+                     🟡 Sector 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8bcca2e547b421765bbae526797cde97.setIcon(div_icon_737fe8330ff9e190c0faf203c583c4fd);
+            
+    
+            var circle_f246b2f22e75a24d87fc843ae5ffe2da = L.circle(
+                [28.5, 77.505],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_946c45854213d337e0d5702556d07589 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_f77f234d583da6dd1f82478dae04c00d = $(`<div id="html_f77f234d583da6dd1f82478dae04c00d" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🟡 Sector 2</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>MODERATE</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>174.7 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (174,670 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#f39c12;width:4%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>301.4 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>476.0 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>2.1 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Residential</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>58%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.62</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>9 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_946c45854213d337e0d5702556d07589.setContent(html_f77f234d583da6dd1f82478dae04c00d);
+            
+        
+
+        circle_f246b2f22e75a24d87fc843ae5ffe2da.bindPopup(popup_946c45854213d337e0d5702556d07589)
+        ;
+
+        
+    
+    
+            circle_f246b2f22e75a24d87fc843ae5ffe2da.bindTooltip(
+                `<div>
+                     🟡 Sector 2: 174.7 ML/yr | MODERATE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_59ed13295f3ba12e384da5cb073dc779 = L.marker(
+                [28.5, 77.505],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_c7e6aa552512ea9b58dbb3513bb5d6bb = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#f39c12;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Sector 2\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e175 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_59ed13295f3ba12e384da5cb073dc779.bindTooltip(
+                `<div>
+                     🟡 Sector 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_59ed13295f3ba12e384da5cb073dc779.setIcon(div_icon_c7e6aa552512ea9b58dbb3513bb5d6bb);
+            
+    
+            var circle_0cd99277993444991046836794958853 = L.circle(
+                [28.4663, 77.5034],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+        var popup_cd60e01dc4220ddd35b2f7eba90a73f9 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_802b1993ac93dd2bffb3aafc44f061b1 = $(`<div id="html_802b1993ac93dd2bffb3aafc44f061b1" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial;min-width:240px;padding:10px;                 background:#0d1117;color:white;border-radius:8px'>       <b style='font-size:15px'>🔴 Pari Chowk</b>       <hr style='border-color:#333;margin:6px 0'>       <table style='width:100%;font-size:12px;border-collapse:collapse'>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Status</td>           <td style='padding:3px 6px'><b style='color:#e74c3c'>LOW</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Annual Recharge</td>           <td style='padding:3px 6px'><b style='color:#2ecc71'>36.2 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>  (36,236 m³/yr)</td>           <td style='padding:3px 6px'><div style='background:#1a1a2e;border-radius:3px;height:8px;width:140px;margin:4px 0'><div style='background:#e74c3c;width:0%;height:8px;border-radius:3px'></div></div></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rooftop Potential</td>           <td style='padding:3px 6px'><b style='color:#3498db'>356.3 ML/yr</b></td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Combined Total</td>           <td style='padding:3px 6px'><b style='color:#f39c12'>392.5 ML/yr</b></td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Area</td>           <td style='padding:3px 6px'>1.8 km²</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Land Use</td>           <td style='padding:3px 6px'>Commercial</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Soil Type</td>           <td style='padding:3px 6px'>Clay Loam</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Imperviousness</td>           <td style='padding:3px 6px'>80%</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Runoff Coeff</td>           <td style='padding:3px 6px'>0.74</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Recharge Wells</td>           <td style='padding:3px 6px'>1 wells recommended</td>         </tr>         <tr>           <td style='padding:3px 6px;color:#888'>Rain (30d real)</td>           <td style='padding:3px 6px'>1.5 mm</td>         </tr>         <tr style='background:#1a1a2e'>           <td style='padding:3px 6px;color:#888'>Soil Moisture</td>           <td style='padding:3px 6px'>0.314 m³/m³</td>         </tr>       </table>       <div style='font-size:10px;color:#555;margin-top:6px'>         Open-Meteo live + GNIDA area data • 07 Mar 2026 05:46       </div>     </div></div>`)[0];
+                popup_cd60e01dc4220ddd35b2f7eba90a73f9.setContent(html_802b1993ac93dd2bffb3aafc44f061b1);
+            
+        
+
+        circle_0cd99277993444991046836794958853.bindPopup(popup_cd60e01dc4220ddd35b2f7eba90a73f9)
+        ;
+
+        
+    
+    
+            circle_0cd99277993444991046836794958853.bindTooltip(
+                `<div>
+                     🔴 Pari Chowk: 36.2 ML/yr | LOW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1df8677176f073ae664bbd282504aab8 = L.marker(
+                [28.4663, 77.5034],
+                {
+}
+            ).addTo(feature_group_a8a4113a303b21559da7add01ae64b08);
+        
+    
+            var div_icon_4e7edd3e1315c7d58651a7e969479087 = L.divIcon({
+  "html": "\u003cdiv style=\u0027\n                font-family:Arial;font-size:10px;font-weight:bold;\n                color:#e74c3c;text-align:center;white-space:nowrap;\n                text-shadow:0 0 4px #000,-1px -1px 0 #000,1px 1px 0 #000\u0027\u003e\n                Pari Chowk\u003cbr\u003e\n                \u003cspan style=\u0027font-size:9px;color:white\u0027\u003e36 ML/yr\u003c/span\u003e\n            \u003c/div\u003e",
+  "iconSize": [120, 28],
+  "iconAnchor": [60, 14],
+  "className": "empty",
+});
+        
+    
+            marker_1df8677176f073ae664bbd282504aab8.bindTooltip(
+                `<div>
+                     🔴 Pari Chowk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1df8677176f073ae664bbd282504aab8.setIcon(div_icon_4e7edd3e1315c7d58651a7e969479087);
+            
+    
+            feature_group_a8a4113a303b21559da7add01ae64b08.addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+    
+            var feature_group_720cbd1e88cb784bae3e894148168585 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_4f40f9a858657f0f7b499c6fedaf085f = L.circleMarker(
+                [28.481, 77.509],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_4f40f9a858657f0f7b499c6fedaf085f.bindTooltip(
+                `<div>
+                     🏠 Alpha 1 rooftop: 450.3 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5011c77035c2fd15012a5b545e5b7727 = L.circleMarker(
+                [28.485, 77.512],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_5011c77035c2fd15012a5b545e5b7727.bindTooltip(
+                `<div>
+                     🏠 Alpha 2 rooftop: 371.1 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29655eaf19e734d8ac52313a103088e9 = L.circleMarker(
+                [28.485, 77.516],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_29655eaf19e734d8ac52313a103088e9.bindTooltip(
+                `<div>
+                     🏠 Beta 1 rooftop: 398.8 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bdcc7ea1a655e848662e5b2483017661 = L.circleMarker(
+                [28.488, 77.519],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_bdcc7ea1a655e848662e5b2483017661.bindTooltip(
+                `<div>
+                     🏠 Beta 2 rooftop: 356.3 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6a90270dc357d834a71041363d0219d6 = L.circleMarker(
+                [28.489, 77.522],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_6a90270dc357d834a71041363d0219d6.bindTooltip(
+                `<div>
+                     🏠 Gamma 1 rooftop: 421.8 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e9af55d7a34ea9882a6c89687d82d66d = L.circleMarker(
+                [28.493, 77.528],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_e9af55d7a34ea9882a6c89687d82d66d.bindTooltip(
+                `<div>
+                     🏠 Delta 1 rooftop: 387.5 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9010d383a0ad8a80bedada185a34971c = L.circleMarker(
+                [28.497, 77.533],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_9010d383a0ad8a80bedada185a34971c.bindTooltip(
+                `<div>
+                     🏠 Zeta 1 rooftop: 318.7 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0f14162f913f0e80cf6bdbbc7fe13879 = L.circleMarker(
+                [28.5, 77.538],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_0f14162f913f0e80cf6bdbbc7fe13879.bindTooltip(
+                `<div>
+                     🏠 Eta 1 rooftop: 280.6 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0c08548f03dd0e51e3d19195a2a8c922 = L.circleMarker(
+                [28.478, 77.488],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_0c08548f03dd0e51e3d19195a2a8c922.bindTooltip(
+                `<div>
+                     🏠 Knowledge Park I rooftop: 467.6 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d4e274c452db06d7997f54469536d0fc = L.circleMarker(
+                [28.474, 77.493],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_d4e274c452db06d7997f54469536d0fc.bindTooltip(
+                `<div>
+                     🏠 Knowledge Park II rooftop: 451.3 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b36847abd4f72bd531625adc785bc373 = L.circleMarker(
+                [28.471, 77.498],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_b36847abd4f72bd531625adc785bc373.bindTooltip(
+                `<div>
+                     🏠 Knowledge Park III rooftop: 433.0 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_66114e30b7a0d393cf60b587763c92c8 = L.circleMarker(
+                [28.467, 77.501],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_66114e30b7a0d393cf60b587763c92c8.bindTooltip(
+                `<div>
+                     🏠 Knowledge Park V rooftop: 372.1 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85edd233c84d95a2784d0c698b5b8cf8 = L.circleMarker(
+                [28.443, 77.488],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_85edd233c84d95a2784d0c698b5b8cf8.bindTooltip(
+                `<div>
+                     🏠 Ecotech I rooftop: 979.8 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_67c3ebfb633497d293cd707d96f05676 = L.circleMarker(
+                [28.433, 77.498],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_67c3ebfb633497d293cd707d96f05676.bindTooltip(
+                `<div>
+                     🏠 Ecotech II rooftop: 831.3 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_93a60388223721714d87de7221b77e70 = L.circleMarker(
+                [28.423000000000002, 77.483],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_93a60388223721714d87de7221b77e70.bindTooltip(
+                `<div>
+                     🏠 Ecotech III rooftop: 706.6 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fea4cc3d61ae237b4ded64779cbd371d = L.circleMarker(
+                [28.463, 77.513],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_fea4cc3d61ae237b4ded64779cbd371d.bindTooltip(
+                `<div>
+                     🏠 Techzone I rooftop: 623.5 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1d5046514585b1f8ff51c174fd516047 = L.circleMarker(
+                [28.4693, 77.523],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_1d5046514585b1f8ff51c174fd516047.bindTooltip(
+                `<div>
+                     🏠 Techzone IV rooftop: 555.2 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c257c9abc017d2d0e43ee9a838c8faeb = L.circleMarker(
+                [28.463, 77.518],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_c257c9abc017d2d0e43ee9a838c8faeb.bindTooltip(
+                `<div>
+                     🏠 Omicron 1 rooftop: 409.0 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2b23f893cf1c10c4d8627cc985406321 = L.circleMarker(
+                [28.46, 77.521],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_2b23f893cf1c10c4d8627cc985406321.bindTooltip(
+                `<div>
+                     🏠 Omicron 2 rooftop: 353.8 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_80fea1064af534a6752963c93b953c1b = L.circleMarker(
+                [28.458, 77.523],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_80fea1064af534a6752963c93b953c1b.bindTooltip(
+                `<div>
+                     🏠 Chi 1 rooftop: 314.7 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0bfef1dfcc428974cbd945821bd709de = L.circleMarker(
+                [28.455000000000002, 77.526],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_0bfef1dfcc428974cbd945821bd709de.bindTooltip(
+                `<div>
+                     🏠 Chi 2 rooftop: 283.0 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a9bf4c0a0793fc8ab014a64983667b3c = L.circleMarker(
+                [28.451, 77.529],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_a9bf4c0a0793fc8ab014a64983667b3c.bindTooltip(
+                `<div>
+                     🏠 Phi 1 rooftop: 259.8 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_74e0b945a283998e16bce1aa3fc18c2f = L.circleMarker(
+                [28.453, 77.503],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_74e0b945a283998e16bce1aa3fc18c2f.bindTooltip(
+                `<div>
+                     🏠 Kasna rooftop: 843.7 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1296c973934464de149f55a545cd3629 = L.circleMarker(
+                [28.438, 77.513],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_1296c973934464de149f55a545cd3629.bindTooltip(
+                `<div>
+                     🏠 Surajpur rooftop: 371.1 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bd9ecf753f34ab8abf25f8318b8764d5 = L.circleMarker(
+                [28.523, 77.473],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_bd9ecf753f34ab8abf25f8318b8764d5.bindTooltip(
+                `<div>
+                     🏠 Bisrakh rooftop: 502.3 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d6579dd8461de03d569c306c32f91776 = L.circleMarker(
+                [28.508, 77.433],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_d6579dd8461de03d569c306c32f91776.bindTooltip(
+                `<div>
+                     🏠 Noida Ext (GN West) rooftop: 1303.9 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_61bae1426ed0ebe8512dde40a2679c3a = L.circleMarker(
+                [28.553, 77.558],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_61bae1426ed0ebe8512dde40a2679c3a.bindTooltip(
+                `<div>
+                     🏠 Dadri rooftop: 910.5 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_07fcfd90c56586d2b7e1aa9df8eeac3f = L.circleMarker(
+                [28.498, 77.513],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_07fcfd90c56586d2b7e1aa9df8eeac3f.bindTooltip(
+                `<div>
+                     🏠 Sector 1 rooftop: 296.9 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f74c546b274ec367d1e716f4180750cd = L.circleMarker(
+                [28.503, 77.508],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_f74c546b274ec367d1e716f4180750cd.bindTooltip(
+                `<div>
+                     🏠 Sector 2 rooftop: 301.4 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9ed2dd2e3def9a91b4f8d88f364ee78c = L.circleMarker(
+                [28.4693, 77.5064],
+                {"bubblingMouseEvents": true, "color": "#9b59b6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9b59b6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_720cbd1e88cb784bae3e894148168585);
+        
+    
+            circle_marker_9ed2dd2e3def9a91b4f8d88f364ee78c.bindTooltip(
+                `<div>
+                     🏠 Pari Chowk rooftop: 356.3 ML/yr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_b28ab60c74e6df02b61d2767c09e0401 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var heat_map_9d4e0fcd65bc847746698decae856968 = L.heatLayer(
+                [[28.478, 77.506, 0.5815533333333334], [28.482, 77.509, 0.560935], [28.482, 77.513, 0.33961833333333336], [28.485, 77.516, 0.3230983333333333], [28.486, 77.519, 0.7472566666666667], [28.49, 77.525, 0.3742916666666667], [28.494, 77.53, 0.32804666666666665], [28.497, 77.535, 0.15601666666666666], [28.475, 77.485, 1.0], [28.471, 77.49, 1.0], [28.468, 77.495, 1.0], [28.464, 77.498, 0.9852566666666667], [28.44, 77.485, 0.09125333333333334], [28.43, 77.495, 0.08252166666666666], [28.42, 77.48, 0.07472833333333333], [28.46, 77.51, 0.15679], [28.4663, 77.52, 0.14874333333333334], [28.46, 77.515, 0.6797016666666666], [28.457, 77.518, 0.6267316666666667], [28.455, 77.52, 0.5945316666666667], [28.452, 77.523, 0.552325], [28.448, 77.526, 0.5412266666666666], [28.45, 77.5, 1.0], [28.435, 77.51, 1.0], [28.52, 77.47, 1.0], [28.505, 77.43, 1.0], [28.55, 77.555, 1.0], [28.495, 77.51, 0.2692483333333333], [28.5, 77.505, 0.2911166666666667], [28.4663, 77.5034, 0.060393333333333334]],
+                {
+  "minOpacity": 0.3,
+  "maxZoom": 18,
+  "radius": 55,
+  "blur": 35,
+  "gradient": {
+  "0.0": "#e74c3c",
+  "0.4": "#f39c12",
+  "0.7": "#3498db",
+  "1.0": "#2ecc71",
+},
+}
+            );
+        
+    
+            heat_map_9d4e0fcd65bc847746698decae856968.addTo(feature_group_b28ab60c74e6df02b61d2767c09e0401);
+        
+    
+            feature_group_b28ab60c74e6df02b61d2767c09e0401.addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+    
+            var feature_group_207109c887df61d56859f22abdd50cef = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_7a61639a3bca27a57d485405089db9b0 = L.polyline(
+                [[28.58, 77.42], [28.56, 77.435], [28.54, 77.445], [28.52, 77.45], [28.5, 77.46], [28.48, 77.47], [28.46, 77.475], [28.44, 77.47], [28.42, 77.465]],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3498db", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_207109c887df61d56859f22abdd50cef);
+        
+    
+            poly_line_7a61639a3bca27a57d485405089db9b0.bindTooltip(
+                `<div>
+                     🌊 Hindon River
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a804cda4cf14252f8ddc84b6a7f5cad0 = L.polyline(
+                [[28.57, 77.39], [28.54, 77.38], [28.51, 77.375], [28.48, 77.36], [28.45, 77.37], [28.42, 77.39]],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2980b9", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(feature_group_207109c887df61d56859f22abdd50cef);
+        
+    
+            poly_line_a804cda4cf14252f8ddc84b6a7f5cad0.bindTooltip(
+                `<div>
+                     🌊 Yamuna River
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e72a017226895c0991461972f54beaa4 = L.circle(
+                [28.42, 77.51],
+                {"bubblingMouseEvents": true, "color": "#1abc9c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1abc9c", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1200, "stroke": true, "weight": 3}
+            ).addTo(feature_group_207109c887df61d56859f22abdd50cef);
+        
+    
+            circle_e72a017226895c0991461972f54beaa4.bindTooltip(
+                `<div>
+                     💧 Surajpur Wetland
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_207109c887df61d56859f22abdd50cef.addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+    
+            var layer_control_9b7278e2d8a8e2359541d341f9fb34b9_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_9e6fd50563564e703aa5e2770b5c0272,
+                    "\ud83d\uddfa\ufe0f Street Map" : tile_layer_9a1fd21caea7abb5d13a6f787d8a66b6,
+                    "\ud83d\udef0\ufe0f Satellite" : tile_layer_9ad2090a6f4cce6c361c5534b5474f52,
+                    "\ud83c\udf11 Dark" : tile_layer_dbfbd1b61cada1441bba2d4b5990cfe0,
+                },
+                overlays :  {
+                    "\u267b\ufe0f Recharge Capacity (Sector-wise)" : feature_group_a8a4113a303b21559da7add01ae64b08,
+                    "\ud83c\udfe0 Rooftop Harvesting Potential" : feature_group_720cbd1e88cb784bae3e894148168585,
+                    "\ud83d\udd25 Recharge Heatmap" : feature_group_b28ab60c74e6df02b61d2767c09e0401,
+                    "\ud83c\udf0a Rivers \u0026 Wetlands" : feature_group_207109c887df61d56859f22abdd50cef,
+                },
+            };
+            let layer_control_9b7278e2d8a8e2359541d341f9fb34b9 = L.control.layers(
+                layer_control_9b7278e2d8a8e2359541d341f9fb34b9_layers.base_layers,
+                layer_control_9b7278e2d8a8e2359541d341f9fb34b9_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+
+        
+    
+            var measure_control_8f1fa9b25571ab39007d6ba1337ee214 = new L.Control.Measure(
+                {
+  "position": "bottomleft",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_f62b5bd578114d3ee1763992ab9d6f43.addControl(measure_control_8f1fa9b25571ab39007d6ba1337ee214);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var tile_layer_558f1982c11aae3345190b2dddcbb62b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_ac3ccab308dcc119da5abd237e7b4aa7 = new L.Control.MiniMap(
+                tile_layer_558f1982c11aae3345190b2dddcbb62b,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_f62b5bd578114d3ee1763992ab9d6f43.addControl(mini_map_ac3ccab308dcc119da5abd237e7b4aa7);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_f62b5bd578114d3ee1763992ab9d6f43);
+        
+</script>
+</html>

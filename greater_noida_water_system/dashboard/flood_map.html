@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_25f59bc7ec198076a2ddb6edfa4c988d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_25f59bc7ec198076a2ddb6edfa4c988d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_25f59bc7ec198076a2ddb6edfa4c988d = L.map(
+                "map_25f59bc7ec198076a2ddb6edfa4c988d",
+                {
+                    center: [28.4744, 77.504],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b87f1ddfc53cb84347337ecd62b69473 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b87f1ddfc53cb84347337ecd62b69473.addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var circle_d4c95ec3892c48039caf43d8193a3ee1 = L.circle(
+                [28.515, 77.45],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_a306bfc4998927a77f275e53deb76f97 = L.marker(
+                [28.515, 77.45],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_99eca5be2bb21f1d7f96b349af2c1ec5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1d510f93b0596b0eb4cadabf04f6fc0c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_462fa538b31a2f7a8a0d81c2406ffd78 = $(`<div id="html_462fa538b31a2f7a8a0d81c2406ffd78" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>🚨 Hindon River Bank</b><br><hr style='margin:4px 0'>Risk: <b style='color:red'>HIGH</b><br>River overflow zone</div></div>`)[0];
+                popup_1d510f93b0596b0eb4cadabf04f6fc0c.setContent(html_462fa538b31a2f7a8a0d81c2406ffd78);
+            
+        
+
+        marker_a306bfc4998927a77f275e53deb76f97.bindPopup(popup_1d510f93b0596b0eb4cadabf04f6fc0c)
+        ;
+
+        
+    
+    
+            marker_a306bfc4998927a77f275e53deb76f97.bindTooltip(
+                `<div>
+                     🚨 Hindon River Bank
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a306bfc4998927a77f275e53deb76f97.setIcon(icon_99eca5be2bb21f1d7f96b349af2c1ec5);
+            
+    
+            var circle_27c3d1cfcb82d52ebe9637d92e73d96b = L.circle(
+                [28.52, 77.47],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_5817c1e96b709038c7d67de7184ae9b2 = L.marker(
+                [28.52, 77.47],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_d2bf332e868574aff773f3b8bf0eec07 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_336e0080badb383022ff3041878071d9 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f55215dc28f396d42863bfe1ed4a7f9f = $(`<div id="html_f55215dc28f396d42863bfe1ed4a7f9f" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>🚨 Bisrakh Village</b><br><hr style='margin:4px 0'>Risk: <b style='color:red'>HIGH</b><br>Hindon floodplain</div></div>`)[0];
+                popup_336e0080badb383022ff3041878071d9.setContent(html_f55215dc28f396d42863bfe1ed4a7f9f);
+            
+        
+
+        marker_5817c1e96b709038c7d67de7184ae9b2.bindPopup(popup_336e0080badb383022ff3041878071d9)
+        ;
+
+        
+    
+    
+            marker_5817c1e96b709038c7d67de7184ae9b2.bindTooltip(
+                `<div>
+                     🚨 Bisrakh Village
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5817c1e96b709038c7d67de7184ae9b2.setIcon(icon_d2bf332e868574aff773f3b8bf0eec07);
+            
+    
+            var circle_0eb135af6dfafb5887582fa73532ecdc = L.circle(
+                [28.43, 77.48],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_8604992c1c68fbf8981ae39792fa65b2 = L.marker(
+                [28.43, 77.48],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_1986a123e913b7bafb3b71c2fe59482a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6a49e2acf5dae2c44856068a94ae8e95 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a02943de0f12dba2880c8fe9d5f27684 = $(`<div id="html_a02943de0f12dba2880c8fe9d5f27684" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>🚨 Yamuna Expressway</b><br><hr style='margin:4px 0'>Risk: <b style='color:red'>HIGH</b><br>Flood corridor</div></div>`)[0];
+                popup_6a49e2acf5dae2c44856068a94ae8e95.setContent(html_a02943de0f12dba2880c8fe9d5f27684);
+            
+        
+
+        marker_8604992c1c68fbf8981ae39792fa65b2.bindPopup(popup_6a49e2acf5dae2c44856068a94ae8e95)
+        ;
+
+        
+    
+    
+            marker_8604992c1c68fbf8981ae39792fa65b2.bindTooltip(
+                `<div>
+                     🚨 Yamuna Expressway
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8604992c1c68fbf8981ae39792fa65b2.setIcon(icon_1986a123e913b7bafb3b71c2fe59482a);
+            
+    
+            var circle_58ab3e97b949f248d33496962fb7739f = L.circle(
+                [28.471, 77.49],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_5022cdde7411ae71caea44d2899aa772 = L.marker(
+                [28.471, 77.49],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_87e640ca509244eb104b2a22f187f2d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acb275102883f6dba0d0fb822a44b667 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d133d7886a8a4d8ab4b5e30c44315cb0 = $(`<div id="html_d133d7886a8a4d8ab4b5e30c44315cb0" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>🚨 Knowledge Park II</b><br><hr style='margin:4px 0'>Risk: <b style='color:red'>HIGH</b><br>Low-lying area</div></div>`)[0];
+                popup_acb275102883f6dba0d0fb822a44b667.setContent(html_d133d7886a8a4d8ab4b5e30c44315cb0);
+            
+        
+
+        marker_5022cdde7411ae71caea44d2899aa772.bindPopup(popup_acb275102883f6dba0d0fb822a44b667)
+        ;
+
+        
+    
+    
+            marker_5022cdde7411ae71caea44d2899aa772.bindTooltip(
+                `<div>
+                     🚨 Knowledge Park II
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5022cdde7411ae71caea44d2899aa772.setIcon(icon_87e640ca509244eb104b2a22f187f2d6);
+            
+    
+            var circle_bbd3df5d59a3f49889a423ef49a7c96b = L.circle(
+                [28.45, 77.5],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_b77f6a553c5a87f4e4c5d3403e634c2d = L.marker(
+                [28.45, 77.5],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_bea99b296fa68f6d068c55c3e92c2e8f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ab717a677b5246332243548d5ee9de61 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_ba38301f64bb66eeac5327378912819d = $(`<div id="html_ba38301f64bb66eeac5327378912819d" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>🚨 Kasna Village</b><br><hr style='margin:4px 0'>Risk: <b style='color:red'>HIGH</b><br>Near drainage channel</div></div>`)[0];
+                popup_ab717a677b5246332243548d5ee9de61.setContent(html_ba38301f64bb66eeac5327378912819d);
+            
+        
+
+        marker_b77f6a553c5a87f4e4c5d3403e634c2d.bindPopup(popup_ab717a677b5246332243548d5ee9de61)
+        ;
+
+        
+    
+    
+            marker_b77f6a553c5a87f4e4c5d3403e634c2d.bindTooltip(
+                `<div>
+                     🚨 Kasna Village
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b77f6a553c5a87f4e4c5d3403e634c2d.setIcon(icon_bea99b296fa68f6d068c55c3e92c2e8f);
+            
+    
+            var circle_f036ae6de35ec2916dba854828f589d7 = L.circle(
+                [28.505, 77.43],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_83f3e631dd672a38e4113faaf5d7c0f6 = L.marker(
+                [28.505, 77.43],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_7c58d38a96fe1686a9a6c6cb3b6c5349 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_62f462ab00737a29719bce703016f395 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_974fe17b2932363e16019669b6972b5e = $(`<div id="html_974fe17b2932363e16019669b6972b5e" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>🚨 Greater Noida West</b><br><hr style='margin:4px 0'>Risk: <b style='color:red'>HIGH</b><br>Hindon river proximity</div></div>`)[0];
+                popup_62f462ab00737a29719bce703016f395.setContent(html_974fe17b2932363e16019669b6972b5e);
+            
+        
+
+        marker_83f3e631dd672a38e4113faaf5d7c0f6.bindPopup(popup_62f462ab00737a29719bce703016f395)
+        ;
+
+        
+    
+    
+            marker_83f3e631dd672a38e4113faaf5d7c0f6.bindTooltip(
+                `<div>
+                     🚨 Greater Noida West
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_83f3e631dd672a38e4113faaf5d7c0f6.setIcon(icon_7c58d38a96fe1686a9a6c6cb3b6c5349);
+            
+    
+            var circle_fc0a0b897842dd4c02844afeb468a729 = L.circle(
+                [28.4663, 77.5034],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 300, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_39f168adc72731925895f935504afe0c = L.marker(
+                [28.4663, 77.5034],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_3163d3c1ec9dc170531f387c20a0864a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ac0577ac4584ef379af33261a15e6594 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_10d6e5fb6fdd7b01efce02a9bc03c139 = $(`<div id="html_10d6e5fb6fdd7b01efce02a9bc03c139" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>⚠️ Pari Chowk</b><br><hr style='margin:4px 0'>Risk: <b style='color:orange'>MODERATE</b><br>Junction flooding</div></div>`)[0];
+                popup_ac0577ac4584ef379af33261a15e6594.setContent(html_10d6e5fb6fdd7b01efce02a9bc03c139);
+            
+        
+
+        marker_39f168adc72731925895f935504afe0c.bindPopup(popup_ac0577ac4584ef379af33261a15e6594)
+        ;
+
+        
+    
+    
+            marker_39f168adc72731925895f935504afe0c.bindTooltip(
+                `<div>
+                     ⚠️ Pari Chowk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_39f168adc72731925895f935504afe0c.setIcon(icon_3163d3c1ec9dc170531f387c20a0864a);
+            
+    
+            var circle_32a1fceedf3dae435cd2c864e3c01c45 = L.circle(
+                [28.42, 77.51],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 300, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_5805d37ab6329e11e1b1da28071797a0 = L.marker(
+                [28.42, 77.51],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_91bd25f4c47d2778d27f9a8ed0e3347e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_de66b9ad04c00c7914113a2ec9e89ed5 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5bca239fc114287f29a6b10c5c98aa5b = $(`<div id="html_5bca239fc114287f29a6b10c5c98aa5b" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>⚠️ Surajpur Wetland</b><br><hr style='margin:4px 0'>Risk: <b style='color:orange'>MODERATE</b><br>Seasonal flooding</div></div>`)[0];
+                popup_de66b9ad04c00c7914113a2ec9e89ed5.setContent(html_5bca239fc114287f29a6b10c5c98aa5b);
+            
+        
+
+        marker_5805d37ab6329e11e1b1da28071797a0.bindPopup(popup_de66b9ad04c00c7914113a2ec9e89ed5)
+        ;
+
+        
+    
+    
+            marker_5805d37ab6329e11e1b1da28071797a0.bindTooltip(
+                `<div>
+                     ⚠️ Surajpur Wetland
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5805d37ab6329e11e1b1da28071797a0.setIcon(icon_91bd25f4c47d2778d27f9a8ed0e3347e);
+            
+    
+            var circle_725a64e37a9a7f5b6ccbca9651ce4c77 = L.circle(
+                [28.475, 77.505],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 300, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_e53904c91461622b2c9b23fb678257f5 = L.marker(
+                [28.475, 77.505],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_4c1918699891b61f930daf606e29ae7a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfadaa58260f85379fef255c2efd0320 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_96ec473294134186434984235122a9bd = $(`<div id="html_96ec473294134186434984235122a9bd" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>⚠️ Alpha 1 Sector</b><br><hr style='margin:4px 0'>Risk: <b style='color:orange'>MODERATE</b><br>Urban runoff</div></div>`)[0];
+                popup_bfadaa58260f85379fef255c2efd0320.setContent(html_96ec473294134186434984235122a9bd);
+            
+        
+
+        marker_e53904c91461622b2c9b23fb678257f5.bindPopup(popup_bfadaa58260f85379fef255c2efd0320)
+        ;
+
+        
+    
+    
+            marker_e53904c91461622b2c9b23fb678257f5.bindTooltip(
+                `<div>
+                     ⚠️ Alpha 1 Sector
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e53904c91461622b2c9b23fb678257f5.setIcon(icon_4c1918699891b61f930daf606e29ae7a);
+            
+    
+            var circle_2e2a664b2ef362ade28d01fe55d85d09 = L.circle(
+                [28.48, 77.515],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 300, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_b0aaf01860dbf9a370686e54411d1aba = L.marker(
+                [28.48, 77.515],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_a638090412da6a37a7331274530d4777 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_514aad6fd7d084a5ebee54a95b8f144e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f65cec02d6f93303b6068f77221929cc = $(`<div id="html_f65cec02d6f93303b6068f77221929cc" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>⚠️ Beta 2 Sector</b><br><hr style='margin:4px 0'>Risk: <b style='color:orange'>MODERATE</b><br>Low elevation</div></div>`)[0];
+                popup_514aad6fd7d084a5ebee54a95b8f144e.setContent(html_f65cec02d6f93303b6068f77221929cc);
+            
+        
+
+        marker_b0aaf01860dbf9a370686e54411d1aba.bindPopup(popup_514aad6fd7d084a5ebee54a95b8f144e)
+        ;
+
+        
+    
+    
+            marker_b0aaf01860dbf9a370686e54411d1aba.bindTooltip(
+                `<div>
+                     ⚠️ Beta 2 Sector
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b0aaf01860dbf9a370686e54411d1aba.setIcon(icon_a638090412da6a37a7331274530d4777);
+            
+    
+            var circle_dfc550974d55a505c5e8b67ed230945c = L.circle(
+                [28.51, 77.51],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 300, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_c7ee15c30a9da37e71b33fbea1cbc97e = L.marker(
+                [28.51, 77.51],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_0880d51b1650c89579a65e3766f26207 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8e17966965499356bf76ee9c3bba1aff = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e642c01d154eee646633f704253d3c9f = $(`<div id="html_e642c01d154eee646633f704253d3c9f" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>⚠️ Dadri Road</b><br><hr style='margin:4px 0'>Risk: <b style='color:orange'>MODERATE</b><br>Road flooding history</div></div>`)[0];
+                popup_8e17966965499356bf76ee9c3bba1aff.setContent(html_e642c01d154eee646633f704253d3c9f);
+            
+        
+
+        marker_c7ee15c30a9da37e71b33fbea1cbc97e.bindPopup(popup_8e17966965499356bf76ee9c3bba1aff)
+        ;
+
+        
+    
+    
+            marker_c7ee15c30a9da37e71b33fbea1cbc97e.bindTooltip(
+                `<div>
+                     ⚠️ Dadri Road
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c7ee15c30a9da37e71b33fbea1cbc97e.setIcon(icon_0880d51b1650c89579a65e3766f26207);
+            
+    
+            var circle_844bd404465becb181fdfaf4b66bdf99 = L.circle(
+                [28.485, 77.52],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 2}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var marker_1f847149692ea0263c6636223e73fa15 = L.marker(
+                [28.485, 77.52],
+                {
+}
+            ).addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+    
+            var icon_18a9aa4cabf6187ab8b5f9555c6d10c6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_afb036eb0fde8c7042a3bc7de7b7c162 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7146117fa77063081d3adc754462a10e = $(`<div id="html_7146117fa77063081d3adc754462a10e" style="width: 100.0%; height: 100.0%;"><div style='font-family:Arial;min-width:160px'><b>✅ Gamma Sector</b><br><hr style='margin:4px 0'>Risk: <b style='color:green'>LOW</b><br>Adequate drainage</div></div>`)[0];
+                popup_afb036eb0fde8c7042a3bc7de7b7c162.setContent(html_7146117fa77063081d3adc754462a10e);
+            
+        
+
+        marker_1f847149692ea0263c6636223e73fa15.bindPopup(popup_afb036eb0fde8c7042a3bc7de7b7c162)
+        ;
+
+        
+    
+    
+            marker_1f847149692ea0263c6636223e73fa15.bindTooltip(
+                `<div>
+                     ✅ Gamma Sector
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f847149692ea0263c6636223e73fa15.setIcon(icon_18a9aa4cabf6187ab8b5f9555c6d10c6);
+            
+    
+            var heat_map_c7e3f3761fcb12f4e701972c106c8cc7 = L.heatLayer(
+                [[28.515, 77.45, 1.0], [28.52, 77.47, 1.0], [28.43, 77.48, 1.0], [28.471, 77.49, 1.0], [28.45, 77.5, 1.0], [28.505, 77.43, 1.0], [28.4663, 77.5034, 0.6], [28.42, 77.51, 0.6], [28.475, 77.505, 0.6], [28.48, 77.515, 0.6], [28.51, 77.51, 0.6], [28.485, 77.52, 0.2]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 18,
+  "radius": 40,
+  "blur": 25,
+  "gradient": {
+  "0.2": "green",
+  "0.6": "orange",
+  "1.0": "red",
+},
+}
+            );
+        
+    
+            heat_map_c7e3f3761fcb12f4e701972c106c8cc7.addTo(map_25f59bc7ec198076a2ddb6edfa4c988d);
+        
+</script>
+</html>
